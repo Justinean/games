@@ -1,0 +1,13 @@
+declare const resultText: HTMLElement;
+declare const retryButton: HTMLElement;
+declare const boards: HTMLElement[];
+declare const endGame: (result: string, resetFunction: EventListener) => void;
+declare const tictactoeBoard: HTMLElement;
+declare let tempSpaceNumber: number;
+declare const resetTictactoe: () => void;
+declare const connectBoard: HTMLElement;
+declare const redRGB = "rgb(255, 0, 0)";
+declare const yellowRGB = "rgb(255, 255, 0)";
+declare const whiteRGB = "rgb(255, 255, 255)";
+declare const resetConnect: () => void;
+declare const tabButtons: HTMLCollectionOf<Element>;
