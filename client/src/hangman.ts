@@ -10,7 +10,7 @@ const endHangman = (result: string) => {
 
 const handleHangmanSubmit = (e: Event) => {
     console.log(hangmanInput.value)
-    if (hangmanInput.value == null || hangmanInput.value === "") return;
+    if (hangmanInput.value == null || hangmanInput.value === "" || (hangmanGuessed.textContent as string).includes(hangmanInput.value)) return hangmanInput.value = "";
     console.log(hangmanInput.value?.length === 1)
     if (hangmanInput.value?.length === 1) {
         console.log(hangmanWord.includes(hangmanInput.value))
@@ -24,12 +24,25 @@ const handleHangmanSubmit = (e: Event) => {
             hangmanSpaces.textContent = newGuessed.join("");
         } else {
             wrongGuesses++;
+            hangmanCovers[wrongGuesses - 1].style.visibility = "hidden";
             if (wrongGuesses >= 7) endHangman("You lose");
         }
+        hangmanGuessed.textContent = hangmanGuessed.textContent + hangmanInput.value;
     } else if (hangmanInput.value?.length === hangmanWord.length) {
         endHangman("You lose");
+        for (let i of Array.from(hangmanCovers)) {
+            i.style.visibility = "hidden";
+        }
     }
     hangmanInput.value = "";
 }
 
 hangmanSubmit.addEventListener("click", handleHangmanSubmit)
+document.addEventListener("keypress", (e: KeyboardEvent) => {
+    if (currentTab === "hangman") {
+        if (e.key === "Enter") {
+            return handleHangmanSubmit(e);
+        }
+        if (hangmanInput !== document.activeElement) hangmanInput.value += e.key;
+    }
+})

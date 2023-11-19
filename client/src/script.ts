@@ -92,6 +92,9 @@ const resetHangman = () => {
     retryButton.style.visibility = "hidden";
     hangmanSubmit.style.display = "block";
     hangmanInput.style.display = "block";
+    for (let i of Array.from(hangmanCovers)) {
+        i.style.visibility = "hidden";
+    }
     getHangmanWord();
 }
 

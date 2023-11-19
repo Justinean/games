@@ -143,6 +143,10 @@ var resetHangman = function () {
     retryButton.style.visibility = "hidden";
     hangmanSubmit.style.display = "block";
     hangmanInput.style.display = "block";
+    for (var _i = 0, _a = Array.from(hangmanCovers); _i < _a.length; _i++) {
+        var i = _a[_i];
+        i.style.visibility = "hidden";
+    }
     getHangmanWord();
 };
 // others

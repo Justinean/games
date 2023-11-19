@@ -173,6 +173,9 @@ p:hover {
     width: 20px;
     margin-right: 10px;
 }
+#vsComputer:hover {
+    cursor: pointer;
+}
 
 label {
     font-size: 24px;
@@ -202,6 +205,7 @@ label {
 
 #hangmanMan {
     position: absolute;
+    margin-top: 90px;
 }
 
 #hangmanStand {
@@ -236,6 +240,10 @@ label {
     text-align: center;
 }
 
+#hangman *:not(.hangmanCover):not(#hangmanCovers){
+    z-index: 5;
+}
+
 #hangmanSubmit {
     margin-top: 20px;
 }
@@ -256,42 +264,57 @@ label {
 }
 
 .hangmanCover:nth-child(1) {
-    top: 15px;
-    left: 0px;
+    top: 80px;
+    left: 97px;
+    width: 110px;
+    height: 240px;
+}
+
+.hangmanCover:nth-child(2) {
+    top: -160px;
+    left: 50px;
+    width: 110px;
+    height: 10px;
+}
+
+.hangmanCover:nth-child(3) {
+    top: -145px;
+    left: 29px;
     width: 52px;
     height: 52px;
 }
 
-.hangmanCover:nth-child(2) {
-    top: 15px;
-    left: 24px;
-    width: 6px;
+.hangmanCover:nth-child(4) {
+    top: -146px;
+    left: 52px;
+    width: 7px;
     height: 115px;
 }
 
-.hangmanCover:nth-child(3) {
-    top: -91px;
-    left: -15px;
+.hangmanCover:nth-child(5) {
+    top: -251px;
+    left: 15px;
+    width: 38px;
+    height: 25px;
+}
+
+.hangmanCover:nth-child(6) {
+    top: -275px;
+    left: 56px;
     width: 39px;
     height: 25px;
 }
 
-.hangmanCover:nth-child(4) {
-    top: -115px;
-    left: 30px;
-    width: 37px;
-    height: 25px;
+.hangmanCover:nth-child(7) {
+    top: -215px;
+    left: 29px;
+    width: 24px;
+    height: 28px;
 }
 
-.hangmanCover:nth-child(5) {
-    top: -55px;
-    width: 25px;
-    height: 27px;
-}
-
-.hangmanCover:nth-child(6) {
-    top: -82px;
-    left: 30px;
+.hangmanCover:nth-child(8) {
+    top: -242px;
+    left: 56px;
     width: 25px;
     height: 28px;
 }
@@ -302,6 +325,15 @@ label {
 }
 #hangmanSpaces:hover {
     cursor: default;
+}
+
+#hangmanGuessed {
+    position: absolute;
+    left: 10%;
+    height: 25%;
+    width: 10%;
+    text-wrap: wrap;
+    letter-spacing: 10px;
 }
 
 #result {
