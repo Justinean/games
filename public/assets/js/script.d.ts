@@ -29,7 +29,6 @@ declare let hangmanCategory: string;
 declare let hangmanWord: string;
 declare const fetchData: () => Promise<unknown>;
 declare const hangmanWords: Promise<hangmanWordsType[]>;
-declare const guessed: any[];
 declare let wrongGuesses: number;
 declare const getHangmanWord: () => Promise<void>;
 declare const resetHangman: () => void;

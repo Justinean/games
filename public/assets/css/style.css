@@ -240,7 +240,7 @@ label {
     text-align: center;
 }
 
-#hangman *:not(.hangmanCover):not(#hangmanCovers){
+#hangman button, #hangman label, #hangman input {
     z-index: 5;
 }
 

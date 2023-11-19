@@ -9,9 +9,8 @@ const endHangman = (result: string) => {
 }
 
 const handleHangmanSubmit = (e: Event) => {
-    console.log(hangmanInput.value)
+    console.log("boo");
     if (hangmanInput.value == null || hangmanInput.value === "" || (hangmanGuessed.textContent as string).includes(hangmanInput.value)) return hangmanInput.value = "";
-    console.log(hangmanInput.value?.length === 1)
     if (hangmanInput.value?.length === 1) {
         console.log(hangmanWord.includes(hangmanInput.value))
         if (hangmanWord.includes(hangmanInput.value)) {
@@ -25,7 +24,7 @@ const handleHangmanSubmit = (e: Event) => {
         } else {
             wrongGuesses++;
             hangmanCovers[wrongGuesses - 1].style.visibility = "hidden";
-            if (wrongGuesses >= 7) endHangman("You lose");
+            if (wrongGuesses > 7) endHangman("You lose");
         }
         hangmanGuessed.textContent = hangmanGuessed.textContent + hangmanInput.value;
     } else if (hangmanInput.value?.length === hangmanWord.length) {

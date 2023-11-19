@@ -117,7 +117,6 @@ var fetchData = function () { return __awaiter(void 0, void 0, void 0, function 
     });
 }); };
 var hangmanWords = fetchData();
-var guessed = [];
 var wrongGuesses = 0;
 boards.push(hangmanBoard);
 var getHangmanWord = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -139,14 +138,17 @@ var getHangmanWord = function () { return __awaiter(void 0, void 0, void 0, func
     });
 }); };
 var resetHangman = function () {
+    wrongGuesses = 0;
     resultText.style.visibility = "hidden";
     retryButton.style.visibility = "hidden";
     hangmanSubmit.style.display = "block";
     hangmanInput.style.display = "block";
+    hangmanInput.textContent = "";
     for (var _i = 0, _a = Array.from(hangmanCovers); _i < _a.length; _i++) {
         var i = _a[_i];
-        i.style.visibility = "hidden";
+        i.style.visibility = "visible";
     }
+    hangmanGuessed.textContent = "";
     getHangmanWord();
 };
 // others

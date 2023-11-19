@@ -72,7 +72,6 @@ const fetchData = async () => new Promise(async (resolve, reject)  => {
     resolve(data.categories);
 })
 const hangmanWords = fetchData() as Promise<hangmanWordsType[]>;
-const guessed = [];
 let wrongGuesses = 0;
 boards.push(hangmanBoard);
 
@@ -88,13 +87,16 @@ const getHangmanWord = async () => {
 }
 
 const resetHangman = () => {
+    wrongGuesses = 0;
     resultText.style.visibility = "hidden";
     retryButton.style.visibility = "hidden";
     hangmanSubmit.style.display = "block";
     hangmanInput.style.display = "block";
+    hangmanInput.textContent = "";
     for (let i of Array.from(hangmanCovers)) {
-        i.style.visibility = "hidden";
+        i.style.visibility = "visible";
     }
+    hangmanGuessed.textContent = "";
     getHangmanWord();
 }
 
