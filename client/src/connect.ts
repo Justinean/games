@@ -19,10 +19,10 @@ const checkBelowClick = (id: number): number => {
     return id;
 }
 
-const makePlayerMoveConnect = (target: HTMLParagraphElement) => new Promise((resolve, reject) => {
+const makePlayerMoveConnect = (target: HTMLParagraphElement, player1?: boolean) => new Promise((resolve, reject) => {
     let newId = checkBelowClick(parseInt(target.id));
     let newTarget = connectBoard.children[newId];
-    (newTarget as HTMLParagraphElement).style.backgroundColor = "yellow";
+    (newTarget as HTMLParagraphElement).style.backgroundColor = player1 ? "red" : "yellow";
     resolve(null);
 })
 
@@ -66,32 +66,37 @@ const evaluateGameConnect = () => {
             if (i % 7 < 4) diagonalString += boardString[i+8*j] || "z";
             if (i % 7 >= 3) diagonalLeftString += boardString[i+6*j] || "z";
         }
-        if (updownString.length === 6 && updownString.includes("rrrr")) return "CPU wins";
-        if (updownString.length === 6 && updownString.includes("yyyy")) return "Player wins"
+        if (updownString.length === 6 && updownString.includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 Wins";
+        if (updownString.length === 6 && updownString.includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
         // Horizontal Win
         if (i < 7 && boardString.slice(0 + 7*i, 7 + 7*i).includes("rrrr")) return "CPU wins";
-        if (i < 7 && boardString.slice(0 + 7*i, 7 + 7*i).includes("yyyy")) return "Player wins";
+        if (i < 7 && boardString.slice(0 + 7*i, 7 + 7*i).includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
 
         // Diagonal Win
-        console.log(diagonalString);
-        if (diagonalString.includes("rrrr")) return "CPU wins";
-        if (diagonalString.includes("yyyy")) return "Player wins";
-        if (diagonalLeftString.includes("rrrr")) return "CPU wins";
-        if (diagonalLeftString.includes("yyyy")) return "Player wins";
+        if (diagonalString.includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 Wins";
+        if (diagonalString.includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
+        if (diagonalLeftString.includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 Wins";
+        if (diagonalLeftString.includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
     }
 }
 
-const connectListener = async (e: MouseEvent) => {
+const connectListener = async (e: Event) => {
     const computedStyle = window.getComputedStyle(e.target as HTMLElement);
     const backgroundColor = computedStyle.getPropertyValue('background-color');
-    console.log(backgroundColor)
     if (!(connectBoard.contains(e.target as Node) && backgroundColor === whiteRGB)) return;
-    await makePlayerMoveConnect(e.target as HTMLParagraphElement);
+    if (vsComputer) {
+        await makePlayerMoveConnect(e.target as HTMLParagraphElement);
+    } else {
+        await makePlayerMoveConnect(e.target as HTMLParagraphElement, turnCounter % 2 === 0);
+        turnCounter++;
+    }
     let result = evaluateGameConnect();
-    if (result != null) return endGame(result, resetConnect);
-    await makeComputerMoveConnect();
-    result = evaluateGameConnect();
-    if (result != null) return endGame(result, resetConnect);
+    if (result != null) return endGame(result, connectListener, resetConnect) as void;
+    if (vsComputer) {
+        await makeComputerMoveConnect();
+        result = evaluateGameConnect();
+        if (result != null) return endGame(result, connectListener, resetConnect) as void;
+    }
 }
 
 document.addEventListener("click", connectListener);

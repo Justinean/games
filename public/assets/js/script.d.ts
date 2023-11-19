@@ -1,7 +1,11 @@
 declare const resultText: HTMLElement;
 declare const retryButton: HTMLElement;
+declare const vsComputerBox: HTMLInputElement;
+declare let currentTab: string;
+declare let vsComputer: boolean;
+declare let turnCounter: number;
 declare const boards: HTMLElement[];
-declare const endGame: (result: string, resetFunction: EventListener) => void;
+declare const endGame: (result: string, gameEventListener: EventListener, resetFunction: EventListener) => void;
 declare const tictactoeBoard: HTMLElement;
 declare let tempSpaceNumber: number;
 declare const resetTictactoe: () => void;
@@ -10,4 +14,23 @@ declare const redRGB = "rgb(255, 0, 0)";
 declare const yellowRGB = "rgb(255, 255, 0)";
 declare const whiteRGB = "rgb(255, 255, 255)";
 declare const resetConnect: () => void;
+interface hangmanWordsType {
+    type: string;
+    words: string[];
+}
+declare const hangmanBoard: HTMLElement;
+declare const hangmanCovers: HTMLCollectionOf<HTMLDivElement>;
+declare const hangmanSubmit: HTMLInputElement;
+declare const hangmanInput: HTMLInputElement;
+declare const hangmanSpaces: HTMLDivElement;
+declare const hangmanGuessed: HTMLDivElement;
+declare const hangmanCategoryElement: HTMLElement;
+declare let hangmanCategory: string;
+declare let hangmanWord: string;
+declare const fetchData: () => Promise<unknown>;
+declare const hangmanWords: Promise<hangmanWordsType[]>;
+declare const guessed: any[];
+declare let wrongGuesses: number;
+declare const getHangmanWord: () => Promise<void>;
+declare const resetHangman: () => void;
 declare const tabButtons: HTMLCollectionOf<Element>;

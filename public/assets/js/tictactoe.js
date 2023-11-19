@@ -89,21 +89,21 @@ var evaluateGame = function () {
         // Vertical Win
         if (boardString[i] === boardString[i + 3] && boardString[i] === boardString[i + 6]) {
             if (boardString[i] === "⭕")
-                return "Player Win";
+                return vsComputer ? "Player Wins" : "Player 1 Wins";
             if (boardString[i] === "❌")
-                return "CPU Win";
+                return vsComputer ? "CPU Wins" : "Player 2 Wins";
         }
         // Horizontal Win
         if (boardString.slice(0 + i * 3, 3 + i * 3).match(/⭕⭕⭕/) != null)
-            return "Player Win";
+            return vsComputer ? "Player Wins" : "Player 1 Wins";
         if (boardString.slice(0 + i * 3, 3 + i * 3).match(/❌❌❌/) != null)
-            return "CPU Win";
+            return vsComputer ? "CPU Wins" : "Player 2 Wins";
         // Diagonal Win
         if ((boardString[i] === boardString[i + 4] && boardString[i] === boardString[i + 8]) || (boardString[i] === boardString[i + 2] && boardString[i] === boardString[i + 4] && i === 2)) {
             if (boardString[i] === "⭕")
-                return "Player Win";
+                return vsComputer ? "Player Wins" : "Player 1 Wins";
             if (boardString[i] === "❌")
-                return "CPU Win";
+                return vsComputer ? "CPU Wins" : "Player 2 Wins";
         }
     }
     return null;
@@ -112,7 +112,7 @@ var makeComputerMove = function () { return new Promise(function (resolve, rejec
     var validMoves = getValidMoves();
     var result = evaluateGame();
     if (validMoves.length <= 0 && result === null)
-        resolve(endGame("Draw", resetTictactoe));
+        resolve(endGame("Draw", tictactoeEventListener, resetTictactoe));
     tictactoeBoard.children[validMoves[Math.floor(Math.random() * validMoves.length)]].textContent = "❌";
     resolve(null);
 }); };
@@ -125,17 +125,30 @@ var tictactoeEventListener = function (e) { return __awaiter(void 0, void 0, voi
                     return [2 /*return*/];
                 if (!(tictactoeBoard.contains(e.target) && e.target.textContent === "⬛"))
                     return [2 /*return*/];
-                e.target.textContent = "⭕";
+                if (vsComputer) {
+                    e.target.textContent = "⭕";
+                }
+                else {
+                    if (turnCounter % 2 === 0) {
+                        e.target.textContent = "❌";
+                    }
+                    else {
+                        e.target.textContent = "⭕";
+                    }
+                    turnCounter++;
+                }
                 result = evaluateGame();
                 if (result != null)
-                    return [2 /*return*/, endGame(result, resetTictactoe)];
+                    return [2 /*return*/, endGame(result, tictactoeEventListener, resetTictactoe)];
+                if (!vsComputer) return [3 /*break*/, 2];
                 return [4 /*yield*/, makeComputerMove()];
             case 1:
                 _a.sent();
                 result = evaluateGame();
                 if (result != null)
-                    return [2 /*return*/, endGame(result, resetTictactoe)];
-                return [2 /*return*/];
+                    return [2 /*return*/, endGame(result, tictactoeEventListener, resetTictactoe)];
+                _a.label = 2;
+            case 2: return [2 /*return*/];
         }
     });
 }); };

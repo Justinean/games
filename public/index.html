@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Games</title>
     <link rel = "stylesheet" href = "/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -11,14 +11,40 @@
     <div id="tabs">
         <button class="tabButton" id="tabTictactoe">Tic Tac Toe</button>
         <button class="tabButton" id="tabConnect">Connect 4</button>
+        <button class="tabButton" id="tabHangman">Hangman</button>
     </div>
     <h2 id="result">Boo</h2>
     <div id="tictactoe"></div>
     <div id="connect"></div>
-    <button id="retryButton">Retry</button>
+    <div id="hangman">
+        <p id="hangmanCategory"></p>
+        <img src="/assets/images/man.png" width="100px" height="200px" id="hangmanMan"/>
+        <div id="hangmanStand">
+            <div id="hangmanPole"></div>
+            <div id="hangmanPoleBase"></div>
+        </div>
+        <div id="hangmanCovers">
+            <div class="hangmanCover" id="firstCover"></div>
+            <div class="hangmanCover" id="secondCover"></div>
+            <div class="hangmanCover" id="thirdCover"></div>
+            <div class="hangmanCover" id="fourthCover"></div>
+            <div class="hangmanCover" id="fifthCover"></div>
+            <div class="hangmanCover" id="sixthCover"></div>
+        </div>
+        <p id="hangmanGuessed"></p>
+        <div id="hangmanSpaces"></div>
+        <input id="hangmanInput"/>
+        <button id="hangmanSubmit">Submit</button>
+    </div>
+    <div id="vsComputerContainer">
+        <input id="vsComputer" type="checkbox" name="vsComputer" />
+        <label for="vsComputer">Play vs Computer</label>
+    </div>
+    <button id="retryButton">Replay</button>
     <script src="/assets/js/script.js"></script>
     <script src="/assets/js/tictactoe.js"></script>
     <script src="/assets/js/connect.js"></script>
+    <script src="/assets/js/hangman.js"></script>
 </body>
 </html>
 

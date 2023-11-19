@@ -1,0 +1,44 @@
+{
+    "categories": [
+        {
+            "type": "Animals",
+            "words": ["elephant", "giraffe", "koala", "tiger", "penguin", "lion", "zebra", "rhinoceros", "cheetah", "kangaroo", "hippopotamus", "crocodile", "dolphin", "armadillo", "gazelle", "lemur", "orangutan", "platypus", "sloth", "jaguar", "parrot", "chameleon", "buffalo", "hedgehog", "lobster", "otter", "panther", "quokka", "raccoon", "seagull", "vulture", "walrus", "x-ray tetra", "yellowjacket", "zebu", "moose", "albatross", "barracuda", "chinchilla", "dalmatian", "flamingo", "goldfish", "havanese", "iguana", "jellyfish"]
+        },
+        {
+            "type": "Countries",
+            "words": ["canada", "brazil", "japan", "australia", "france", "germany", "india", "mexico", "egypt", "greece", "italy", "kenya", "nepal", "peru", "russia", "spain", "thailand", "vietnam", "zambia", "argentina", "ireland", "turkey", "south korea", "switzerland", "poland", "netherlands", "chile", "iceland", "morocco", "singapore", "malaysia", "philippines", "indonesia", "pakistan", "iran", "iraq", "nigeria", "south africa", "canada", "australia", "brazil", "china", "usa", "uk", "jamaica", "norway", "denmark", "sweden"]
+        },
+        {
+            "type": "Fruits",
+            "words": ["apple", "banana", "orange", "grape", "kiwi", "mango", "pineapple", "watermelon", "strawberry", "blueberry", "raspberry", "blackberry", "peach", "pear", "plum", "cherry", "apricot", "fig", "pomegranate", "coconut", "avocado", "guava", "passion fruit", "dragon fruit", "kiwano", "jackfruit", "persimmon", "tangerine", "cantaloupe", "honeydew", "papaya", "lychee", "nectarine", "grapefruit", "lime", "lemon", "coconut", "papaya", "cucumber", "olive", "date", "elderberry", "boysenberry", "kiwi fruit", "mango", "star fruit", "rhubarb", "blackcurrant", "kiwi", "mandarin", "nectarine", "papaya"]
+        },
+        {
+            "type": "Movies",
+            "words": ["avatar", "inception", "jurassic park", "star wars", "frozen", "titanic", "the matrix", "forrest gump", "the shawshank redemption", "the godfather", "pulp fiction", "the dark knight", "fight club", "the silence of the lambs", "braveheart", "gladiator", "the lion king", "back to the future", "the lord of the rings", "harry potter", "the wizard of oz", "the sound of music", "casablanca", "gone with the wind", "schindler's list", "e.t. the extra-terrestrial", "the terminator", "indiana jones", "the shining", "the exorcist", "jaws", "gravity", "interstellar", "the avengers", "black panther", "iron man", "captain america", "thor", "spider-man", "wonder woman", "the jungle book", "alice in wonderland", "the little mermaid", "finding nemo", "toy story", "shrek"]
+        },
+        {
+            "type": "Colors",
+            "words": ["red", "blue", "green", "yellow", "purple", "orange", "pink", "brown", "black", "white", "gray", "gold", "silver", "indigo", "violet", "cyan", "magenta", "turquoise", "teal", "lavender", "maroon", "navy", "olive", "peach", "periwinkle", "rose", "ruby", "sapphire", "topaz", "amber", "emerald", "jasper", "opal", "pearl", "quartz", "ruby", "sapphire", "tiger's eye", "ultramarine", "vermilion", "wisteria", "zaffre", "beige", "cerulean", "chartreuse", "coral", "crimson"]
+        },
+        {
+            "type": "Sports",
+            "words": ["soccer", "basketball", "football", "tennis", "golf", "baseball", "volleyball", "cricket", "hockey", "rugby", "cycling", "swimming", "running", "surfing", "skiing", "snowboarding", "boxing", "wrestling", "karate", "gymnastics", "figure skating", "horse racing", "table tennis", "badminton", "archery", "shooting", "bowling", "softball", "lacrosse", "ultimate frisbee", "rowing", "sailing", "climbing", "weightlifting", "triathlon", "bobsleigh", "curling", "fencing", "judo", "taekwondo", "pentathlon", "equestrian", "nordic skiing", "biathlon", "luge", "water polo", "handball"]
+        },
+        {
+            "type": "Vegetables",
+            "words": ["carrot", "broccoli", "spinach", "cucumber", "tomato", "potato", "onion", "garlic", "bell pepper", "zucchini", "kale", "lettuce", "cauliflower", "asparagus", "brussels sprouts", "eggplant", "celery", "beetroot", "radish", "cabbage", "sweet potato", "peas", "corn", "butternut squash", "pumpkin", "turnip", "artichoke", "leek", "avocado", "okra", "fennel", "rhubarb", "bok choy", "watercress", "chard", "endive", "escarole", "collard greens", "rutabaga", "parsnip", "daikon", "celeriac", "salsify", "jicama", "kohlrabi"]
+        },
+        {
+            "type": "Cities",
+            "words": ["new york", "london", "paris", "tokyo", "rome", "sydney", "cairo", "moscow", "rio de janeiro", "mumbai", "berlin", "istanbul", "bangkok", "vancouver", "amsterdam", "nairobi", "lima", "madrid", "beijing", "dubai", "athens", "seoul", "zurich", "warsaw", "oslo", "stockholm", "jakarta", "manila", "karachi", "tehran", "lagos", "johannesburg", "toronto", "buenos aires", "dallas", "mexico city", "los angeles", "sydney", "rome", "hanoi", "helsinki", "lisbon", "bucharest", "vienna", "dublin", "brussels"]
+        },
+        {
+            "type": "Languages",
+            "words": ["english", "spanish", "chinese", "hindi", "arabic", "portuguese", "bengali", "russian", "japanese", "punjabi", "german", "javanese", "telugu", "marathi", "turkish", "tamil", "urdu", "french", "italian", "korean", "vietnamese", "malay", "thai", "polish", "dutch", "urdu", "swedish", "czech", "indonesian", "greek", "norwegian", "hungarian", "finnish", "danish", "brazilian portuguese", "latin", "hebrew", "malayalam", "kannada", "assamese", "odia", "nepali", "sinhala", "burmese", "mongolian", "tibetan", "navajo"]
+        },
+        {
+            "type": "Professions",
+            "words": ["doctor","engineer","teacher","programmer","nurse","artist","chef","scientist","pilot","police officer","firefighter","architect","musician","photographer","writer","accountant","lawyer","electrician","athlete","actor"]
+        }
+    ]
+}

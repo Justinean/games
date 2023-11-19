@@ -39,6 +39,9 @@ app.use(express_1.default.urlencoded({ extended: true, parameterLimit: 50000 }))
 app.get("/", (req, res) => {
     res.sendFile(path_1.default.join(__dirname, "..", 'public', "index.html"));
 });
+app.get("/hangman/words", (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, "..", "public", "assets", "json", "hangmanWords.json"));
+});
 app.listen(port, () => {
     console.log(`Main server listening on port ${port}`);
 });

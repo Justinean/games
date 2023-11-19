@@ -52,10 +52,10 @@ var checkBelowClick = function (id) {
     }
     return id;
 };
-var makePlayerMoveConnect = function (target) { return new Promise(function (resolve, reject) {
+var makePlayerMoveConnect = function (target, player1) { return new Promise(function (resolve, reject) {
     var newId = checkBelowClick(parseInt(target.id));
     var newTarget = connectBoard.children[newId];
-    newTarget.style.backgroundColor = "yellow";
+    newTarget.style.backgroundColor = player1 ? "red" : "yellow";
     resolve(null);
 }); };
 var getValidMovesConnect = function () {
@@ -101,24 +101,23 @@ var evaluateGameConnect = function () {
                 diagonalLeftString += boardString[i + 6 * j] || "z";
         }
         if (updownString.length === 6 && updownString.includes("rrrr"))
-            return "CPU wins";
+            return vsComputer ? "CPU wins" : "Player 2 Wins";
         if (updownString.length === 6 && updownString.includes("yyyy"))
-            return "Player wins";
+            return vsComputer ? "Player wins" : "Player 1 Wins";
         // Horizontal Win
         if (i < 7 && boardString.slice(0 + 7 * i, 7 + 7 * i).includes("rrrr"))
             return "CPU wins";
         if (i < 7 && boardString.slice(0 + 7 * i, 7 + 7 * i).includes("yyyy"))
-            return "Player wins";
+            return vsComputer ? "Player wins" : "Player 1 Wins";
         // Diagonal Win
-        console.log(diagonalString);
         if (diagonalString.includes("rrrr"))
-            return "CPU wins";
+            return vsComputer ? "CPU wins" : "Player 2 Wins";
         if (diagonalString.includes("yyyy"))
-            return "Player wins";
+            return vsComputer ? "Player wins" : "Player 1 Wins";
         if (diagonalLeftString.includes("rrrr"))
-            return "CPU wins";
+            return vsComputer ? "CPU wins" : "Player 2 Wins";
         if (diagonalLeftString.includes("yyyy"))
-            return "Player wins";
+            return vsComputer ? "Player wins" : "Player 1 Wins";
     }
 };
 var connectListener = function (e) { return __awaiter(void 0, void 0, void 0, function () {
@@ -128,22 +127,31 @@ var connectListener = function (e) { return __awaiter(void 0, void 0, void 0, fu
             case 0:
                 computedStyle = window.getComputedStyle(e.target);
                 backgroundColor = computedStyle.getPropertyValue('background-color');
-                console.log(backgroundColor);
                 if (!(connectBoard.contains(e.target) && backgroundColor === whiteRGB))
                     return [2 /*return*/];
+                if (!vsComputer) return [3 /*break*/, 2];
                 return [4 /*yield*/, makePlayerMoveConnect(e.target)];
             case 1:
                 _a.sent();
+                return [3 /*break*/, 4];
+            case 2: return [4 /*yield*/, makePlayerMoveConnect(e.target, turnCounter % 2 === 0)];
+            case 3:
+                _a.sent();
+                turnCounter++;
+                _a.label = 4;
+            case 4:
                 result = evaluateGameConnect();
                 if (result != null)
-                    return [2 /*return*/, endGame(result, resetConnect)];
+                    return [2 /*return*/, endGame(result, connectListener, resetConnect)];
+                if (!vsComputer) return [3 /*break*/, 6];
                 return [4 /*yield*/, makeComputerMoveConnect()];
-            case 2:
+            case 5:
                 _a.sent();
                 result = evaluateGameConnect();
                 if (result != null)
-                    return [2 /*return*/, endGame(result, resetConnect)];
-                return [2 /*return*/];
+                    return [2 /*return*/, endGame(result, connectListener, resetConnect)];
+                _a.label = 6;
+            case 6: return [2 /*return*/];
         }
     });
 }); };

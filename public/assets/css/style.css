@@ -6,6 +6,7 @@ body {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+    margin: 0;
 }
 
 button {
@@ -25,17 +26,24 @@ button:hover {
     top: 0;
     left: 0;
     height: 10vh;
-    width: 50vw;
-    padding-left: 25vw;
-    padding-right: 25vw;
+    width: 66vw;
+    padding-left: 17vw;
+    padding-right: 17vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 100;
+    background-color: aquamarine;
 }
 
 .tabButton {
     width: 200px;
     height: 50px;
+}
+
+#tictactoe {
+    display: inline-grid;
+    margin-top: 100px;
 }
 
 #tictactoe p {
@@ -67,17 +75,38 @@ p:hover {
     row-gap: 5px;
     width: 450px;
     height: 450px;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+@media screen and (max-width: 550px) {
+    #tictactoe {
+        width: 80vw;
+        height: 80vw;
+    }
+    #tictactoe p {
+        font-size: 65px
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #tictactoe p {
+        font-size: 50px
+    }
 }
 
 #connect {
-    margin-top: 250px;
+    position: relative;
+    top: 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 80vh;
-    height: 70vh;
+    width: 800px;
+    height: 700px;
     background-color: rgba(0, 0, 255, 0.33);
     padding: 20px;
+    border-bottom: 40px;
+    min-height: 700px;
 }
 
 #connect p{
@@ -88,17 +117,207 @@ p:hover {
     background-color: #ffffff;
 }
 
-#result {
-    position: absolute;
-    top: 100px;
-    font-size: 36px;
-    visibility: hidden;
+@media screen and (max-width: 850px) {
+    body {
+        justify-content: flex-start;
+    }
+    #connect {
+        width: 80vw;
+        height: 70vw;
+        min-width: 290px;
+        min-height: 280px;
+    }
+    #connect p {
+        width: 11%;
+        height: 12%;
+    }
+
+    #tabs {
+        padding: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .tabButton {
+        font-size: 16px;
+        padding: 5px;
+        width: 33%;
+        min-width: 85px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #connect {
+        width: 75vw;
+        padding: 3px;
+    }
+    #connect p {
+        margin: 3px;
+    }
+    .tabButton {
+        font-size: 12px;
+    }
+}
+
+#vsComputerContainer {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+#vsComputer {
+    display: inline;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+label {
+    font-size: 24px;
+    display: inline;
     font-family: "playpen sans";
 }
 
+#hangman {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#hangmanCategory {
+    position: relative;
+    top: -40px;
+}
+
+#hangman p {
+    z-index: 1;
+    font-size: 24px;
+    font-family: "playpen sans"
+}
+#hangman p:hover {
+    cursor: default;
+}
+
+#hangmanMan {
+    position: absolute;
+}
+
+#hangmanStand {
+    position: relative;
+    left: 50px;
+}
+
+#hangmanPole {
+    width: 100px;
+    height: 225px;
+    border: 3px solid black;
+    border-left: 0px;
+    border-bottom: 0px;
+}
+
+#hangmanPoleBase {
+    width: 100px;
+    position: relative;
+    border-top: 3px solid black;
+    left: 50px;
+}
+
+#hangmanInput {
+    font-family: "playpen sans";
+    font-size: 24px;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    padding: 5px;
+    text-align: center;
+}
+
+#hangmanSubmit {
+    margin-top: 20px;
+}
+
+#hangmanCovers {
+    position: absolute;
+}
+.hangmanCover {
+    position: relative; 
+/*
+    
+    top: 10px; 
+    left: 10px; 
+    width: 100px; 
+    height: 100px;
+*/
+    background-color: #ffffff;
+}
+
+.hangmanCover:nth-child(1) {
+    top: 15px;
+    left: 0px;
+    width: 52px;
+    height: 52px;
+}
+
+.hangmanCover:nth-child(2) {
+    top: 15px;
+    left: 24px;
+    width: 6px;
+    height: 115px;
+}
+
+.hangmanCover:nth-child(3) {
+    top: -91px;
+    left: -15px;
+    width: 39px;
+    height: 25px;
+}
+
+.hangmanCover:nth-child(4) {
+    top: -115px;
+    left: 30px;
+    width: 37px;
+    height: 25px;
+}
+
+.hangmanCover:nth-child(5) {
+    top: -55px;
+    width: 25px;
+    height: 27px;
+}
+
+.hangmanCover:nth-child(6) {
+    top: -82px;
+    left: 30px;
+    width: 25px;
+    height: 28px;
+}
+
+#hangmanSpaces {
+    font-size: 24px;
+    letter-spacing: 5px;
+}
+#hangmanSpaces:hover {
+    cursor: default;
+}
+
+#result {
+    position: relative;
+    top: 100px;
+    font-size: 36px;
+    font-family: "playpen sans";
+    visibility: hidden;
+    z-index: 1;
+}
+
 #retryButton {
-    margin-top: 50px;
+    position: relative;
+    margin-top: 20px;
     width: 200px;
     height: 50px;
     visibility: hidden;
+    margin-bottom: 50px;
 }

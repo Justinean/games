@@ -18,6 +18,10 @@ app.get("/", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, "..", 'public', "index.html"));
 })
 
+app.get("/hangman/words", (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, "..", "public", "assets", "json", "hangmanWords.json"))
+})
+
 app.listen(port, () => {
     console.log(`Main server listening on port ${port}`);
 })
