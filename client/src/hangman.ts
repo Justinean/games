@@ -28,6 +28,11 @@ const handleHangmanSubmit = (e: Event) => {
         }
         hangmanGuessed.textContent = hangmanGuessed.textContent + hangmanInput.value;
     } else if (hangmanInput.value?.length === hangmanWord.length) {
+        if (hangmanInput.value.toLowerCase() === hangmanWord.toLowerCase()) {
+            hangmanCovers[0].style.visibility = "hidden";
+            hangmanCovers[1].style.visibility = "hidden";
+            return endHangman("You win");
+        }
         endHangman("You lose");
         for (let i of Array.from(hangmanCovers)) {
             i.style.visibility = "hidden";
