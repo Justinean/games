@@ -10,6 +10,7 @@ declare const tictactoeBoard: HTMLElement;
 declare let tempSpaceNumber: number;
 declare const resetTictactoe: () => void;
 declare const connectBoard: HTMLElement;
+declare const connectRatio = 0.8;
 declare const redRGB = "rgb(255, 0, 0)";
 declare const yellowRGB = "rgb(255, 255, 0)";
 declare const whiteRGB = "rgb(255, 255, 255)";

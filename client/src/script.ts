@@ -13,6 +13,9 @@ const endGame = (result: string, gameEventListener: EventListener, resetFunction
     retryButton.style.visibility = "visible";
     retryButton.addEventListener("click", resetFunction);
 }
+window.onresize = () => {
+    connectBoard.style.paddingBottom = `${connectRatio * connectBoard.clientWidth}px`
+}
 
 vsComputerBox.addEventListener("change", (e: Event) => {
     vsComputer = (e.target as HTMLInputElement).checked;
@@ -37,10 +40,12 @@ const resetTictactoe = () => {
 
 // connect 4
 const connectBoard = document.getElementById("connect") as HTMLElement;
+const connectRatio = .8;
 boards.push(connectBoard);
 const redRGB = "rgb(255, 0, 0)"
 const yellowRGB = "rgb(255, 255, 0)"
 const whiteRGB = "rgb(255, 255, 255)"
+connectBoard.style.paddingBottom = `${connectRatio * connectBoard.clientWidth}px`
 const resetConnect = () => {
     turnCounter = 1;
     for (let i of Array.from(connectBoard.children)) {
@@ -121,7 +126,7 @@ for (let i of Array.from(tabButtons)) {
             tictactoeBoard.style.display = "inline-grid";
             (vsComputerBox.parentElement as HTMLElement).style.top = "0px";
             retryButton.style.top = "0px";
-            (vsComputerBox.parentElement as HTMLElement).style.display = "block";
+            (vsComputerBox.parentElement as HTMLElement).style.display = "flex";
             ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Play vs Computer"
             currentTab = "tictactoe"
         }
@@ -129,14 +134,14 @@ for (let i of Array.from(tabButtons)) {
             connectBoard.style.display = "flex";
             (vsComputerBox.parentElement as HTMLElement).style.top = "100px";
             retryButton.style.top = "100px";
-            (vsComputerBox.parentElement as HTMLElement).style.display = "block";
+            (vsComputerBox.parentElement as HTMLElement).style.display = "flex";
             ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Play vs Computer"
             currentTab = "connect"
         }
         if ((e.target as HTMLElement).id === "tabHangman") {
             hangmanBoard.style.display = "flex";
             (vsComputerBox.parentElement as HTMLElement).style.top = "0px";
-            (vsComputerBox.parentElement as HTMLElement).style.display = "block";
+            (vsComputerBox.parentElement as HTMLElement).style.display = "flex";
             ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Show Category Name"
             currentTab = "hangman"
         }

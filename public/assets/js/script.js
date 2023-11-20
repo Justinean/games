@@ -50,6 +50,9 @@ var endGame = function (result, gameEventListener, resetFunction) {
     retryButton.style.visibility = "visible";
     retryButton.addEventListener("click", resetFunction);
 };
+window.onresize = function () {
+    connectBoard.style.paddingBottom = "".concat(connectRatio * connectBoard.clientWidth, "px");
+};
 vsComputerBox.addEventListener("change", function (e) {
     vsComputer = e.target.checked;
     vsComputer ? hangmanCategoryElement.style.visibility = "visible" : hangmanCategoryElement.style.visibility = "hidden";
@@ -73,10 +76,12 @@ var resetTictactoe = function () {
 };
 // connect 4
 var connectBoard = document.getElementById("connect");
+var connectRatio = .8;
 boards.push(connectBoard);
 var redRGB = "rgb(255, 0, 0)";
 var yellowRGB = "rgb(255, 255, 0)";
 var whiteRGB = "rgb(255, 255, 255)";
+connectBoard.style.paddingBottom = "".concat(connectRatio * connectBoard.clientWidth, "px");
 var resetConnect = function () {
     turnCounter = 1;
     for (var _i = 0, _a = Array.from(connectBoard.children); _i < _a.length; _i++) {
@@ -170,7 +175,7 @@ for (var _i = 0, _a = Array.from(tabButtons); _i < _a.length; _i++) {
             tictactoeBoard.style.display = "inline-grid";
             vsComputerBox.parentElement.style.top = "0px";
             retryButton.style.top = "0px";
-            vsComputerBox.parentElement.style.display = "block";
+            vsComputerBox.parentElement.style.display = "flex";
             vsComputerBox.parentElement.children[1].textContent = "Play vs Computer";
             currentTab = "tictactoe";
         }
@@ -178,14 +183,14 @@ for (var _i = 0, _a = Array.from(tabButtons); _i < _a.length; _i++) {
             connectBoard.style.display = "flex";
             vsComputerBox.parentElement.style.top = "100px";
             retryButton.style.top = "100px";
-            vsComputerBox.parentElement.style.display = "block";
+            vsComputerBox.parentElement.style.display = "flex";
             vsComputerBox.parentElement.children[1].textContent = "Play vs Computer";
             currentTab = "connect";
         }
         if (e.target.id === "tabHangman") {
             hangmanBoard.style.display = "flex";
             vsComputerBox.parentElement.style.top = "0px";
-            vsComputerBox.parentElement.style.display = "block";
+            vsComputerBox.parentElement.style.display = "flex";
             vsComputerBox.parentElement.children[1].textContent = "Show Category Name";
             currentTab = "hangman";
         }
