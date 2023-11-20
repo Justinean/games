@@ -14,6 +14,7 @@ const endGame = (result: string, gameEventListener: EventListener, resetFunction
     retryButton.addEventListener("click", resetFunction);
 }
 window.onresize = () => {
+    tictactoeBoard.style.height = `${tictactoeBoard.clientWidth}px`
     connectBoard.style.paddingBottom = `${connectRatio * connectBoard.clientWidth}px`
 }
 
@@ -120,8 +121,10 @@ for (let i of Array.from(tabButtons)) {
     i.addEventListener("click", (e) => {
         for (let j of boards) {
             j.style.display = "none";
-            resetTictactoe();
         }
+        resetTictactoe();
+        resetConnect();
+        resetHangman();
         if ((e.target as HTMLElement).id === "tabTictactoe") {
             tictactoeBoard.style.display = "inline-grid";
             (vsComputerBox.parentElement as HTMLElement).style.top = "0px";
@@ -137,6 +140,7 @@ for (let i of Array.from(tabButtons)) {
             (vsComputerBox.parentElement as HTMLElement).style.display = "flex";
             ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Play vs Computer"
             currentTab = "connect"
+            connectBoard.style.paddingBottom = `${connectRatio * connectBoard.clientWidth}px`
         }
         if ((e.target as HTMLElement).id === "tabHangman") {
             hangmanBoard.style.display = "flex";

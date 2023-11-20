@@ -51,6 +51,7 @@ var endGame = function (result, gameEventListener, resetFunction) {
     retryButton.addEventListener("click", resetFunction);
 };
 window.onresize = function () {
+    tictactoeBoard.style.height = "".concat(tictactoeBoard.clientWidth, "px");
     connectBoard.style.paddingBottom = "".concat(connectRatio * connectBoard.clientWidth, "px");
 };
 vsComputerBox.addEventListener("change", function (e) {
@@ -169,8 +170,10 @@ for (var _i = 0, _a = Array.from(tabButtons); _i < _a.length; _i++) {
         for (var _i = 0, boards_1 = boards; _i < boards_1.length; _i++) {
             var j = boards_1[_i];
             j.style.display = "none";
-            resetTictactoe();
         }
+        resetTictactoe();
+        resetConnect();
+        resetHangman();
         if (e.target.id === "tabTictactoe") {
             tictactoeBoard.style.display = "inline-grid";
             vsComputerBox.parentElement.style.top = "0px";
@@ -186,6 +189,7 @@ for (var _i = 0, _a = Array.from(tabButtons); _i < _a.length; _i++) {
             vsComputerBox.parentElement.style.display = "flex";
             vsComputerBox.parentElement.children[1].textContent = "Play vs Computer";
             currentTab = "connect";
+            connectBoard.style.paddingBottom = "".concat(connectRatio * connectBoard.clientWidth, "px");
         }
         if (e.target.id === "tabHangman") {
             hangmanBoard.style.display = "flex";
