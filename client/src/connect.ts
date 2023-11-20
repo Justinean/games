@@ -70,7 +70,6 @@ const evaluateGameConnect = () => {
             if (i % 7 < 4 && !ignoreDiagonal) diagonalString += boardString[i+8*j] || "z";
             if (i % 7 > 3 && !ignoreDiagonal) diagonalLeftString += boardString[i+6*j] || "z";
         }
-        console.log(updownString, diagonalString, diagonalLeftString, i, boardString[i])
         if (updownString.length === 6 && updownString.includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 Wins";
         if (updownString.length === 6 && updownString.includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
         // Horizontal Win

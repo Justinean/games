@@ -118,8 +118,9 @@ var makeComputerMove = function () { return new Promise(function (resolve, rejec
 }); };
 var tictactoeEventListener = function (e) { return __awaiter(void 0, void 0, void 0, function () {
     var result;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
                 if (!tictactoeBoard.contains(e.target))
                     return [2 /*return*/];
@@ -140,14 +141,16 @@ var tictactoeEventListener = function (e) { return __awaiter(void 0, void 0, voi
                 result = evaluateGame();
                 if (result != null)
                     return [2 /*return*/, endGame(result, tictactoeEventListener, resetTictactoe)];
+                if (Array.from((_a = e.target.parentElement) === null || _a === void 0 ? void 0 : _a.children).filter(function (item) { return item.textContent === "⬛"; }).length <= 0)
+                    return [2 /*return*/, endGame("Draw", tictactoeEventListener, resetTictactoe)];
                 if (!vsComputer) return [3 /*break*/, 2];
                 return [4 /*yield*/, makeComputerMove()];
             case 1:
-                _a.sent();
+                _b.sent();
                 result = evaluateGame();
                 if (result != null)
                     return [2 /*return*/, endGame(result, tictactoeEventListener, resetTictactoe)];
-                _a.label = 2;
+                _b.label = 2;
             case 2: return [2 /*return*/];
         }
     });

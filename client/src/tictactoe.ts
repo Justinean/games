@@ -91,6 +91,7 @@ const tictactoeEventListener: EventListener = async (e: Event) => {
     }
     let result = evaluateGame();
     if (result != null) return endGame(result, tictactoeEventListener, resetTictactoe);
+    if (Array.from((e.target as HTMLParagraphElement).parentElement?.children as HTMLCollection).filter((item) => item.textContent === "⬛").length <= 0) return endGame("Draw", tictactoeEventListener, resetTictactoe)
     if (vsComputer) {
         await makeComputerMove();
         result = evaluateGame();
