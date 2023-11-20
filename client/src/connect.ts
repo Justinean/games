@@ -65,11 +65,12 @@ const evaluateGameConnect = () => {
         let ignoreDiagonalLeft = false;
         for (let j = 0; j < 6; j++) {
             updownString += boardString[i+7*j] || "z";
-            if (i % 8 !== 0) ignoreDiagonal = true;
-            if (i % 6 !== 0) ignoreDiagonalLeft = true;
+            if ((i+8*j) % 7 === 0 && i % 7 !== 0) ignoreDiagonal = true;
+            if ((i+6*j) % 7 === 6 && i % 7 !== 6) ignoreDiagonalLeft = true;
             if (i % 7 < 4 && !ignoreDiagonal) diagonalString += boardString[i+8*j] || "z";
-            if (i % 7 > 3 && !ignoreDiagonal) diagonalLeftString += boardString[i+6*j] || "z";
+            if (i % 7 > 2 && !ignoreDiagonalLeft) diagonalLeftString += boardString[i+6*j] || "z";
         }
+        console.log(diagonalLeftString)
         if (updownString.length === 6 && updownString.includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 Wins";
         if (updownString.length === 6 && updownString.includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
         // Horizontal Win

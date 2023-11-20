@@ -1,6 +1,10 @@
 declare const resultText: HTMLElement;
 declare const retryButton: HTMLElement;
 declare const vsComputerBox: HTMLInputElement;
+declare const mousePos: {
+    x: number;
+    y: number;
+};
 declare let currentTab: string;
 declare let vsComputer: boolean;
 declare let turnCounter: number;
@@ -10,7 +14,7 @@ declare const tictactoeBoard: HTMLElement;
 declare let tempSpaceNumber: number;
 declare const resetTictactoe: () => void;
 declare const connectBoard: HTMLElement;
-declare const connectRatio = 0.8;
+declare let connectRatio: number;
 declare const redRGB = "rgb(255, 0, 0)";
 declare const yellowRGB = "rgb(255, 255, 0)";
 declare const whiteRGB = "rgb(255, 255, 255)";
@@ -33,4 +37,7 @@ declare const hangmanWords: Promise<hangmanWordsType[]>;
 declare let wrongGuesses: number;
 declare const getHangmanWord: () => Promise<void>;
 declare const resetHangman: () => void;
+declare const peggingBoard: HTMLDivElement;
+declare const pegHoles: HTMLDivElement;
+declare let followMouseLoop: boolean;
 declare const tabButtons: HTMLCollectionOf<Element>;

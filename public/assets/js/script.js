@@ -39,6 +39,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var resultText = document.getElementById("result");
 var retryButton = document.getElementById("retryButton");
 var vsComputerBox = document.getElementById("vsComputer");
+var mousePos = { x: 0, y: 0 };
 var currentTab;
 var vsComputer = vsComputerBox.checked;
 var turnCounter = 1;
@@ -51,6 +52,7 @@ var endGame = function (result, gameEventListener, resetFunction) {
     retryButton.addEventListener("click", resetFunction);
 };
 window.onresize = function () {
+    window.innerWidth < 980 ? connectRatio = .75 : connectRatio = .8;
     tictactoeBoard.style.height = "".concat(tictactoeBoard.clientWidth, "px");
     connectBoard.style.paddingBottom = "".concat(connectRatio * connectBoard.clientWidth, "px");
 };
@@ -77,7 +79,8 @@ var resetTictactoe = function () {
 };
 // connect 4
 var connectBoard = document.getElementById("connect");
-var connectRatio = .8;
+var connectRatio;
+window.innerWidth < 980 ? connectRatio = .75 : connectRatio = .8;
 boards.push(connectBoard);
 var redRGB = "rgb(255, 0, 0)";
 var yellowRGB = "rgb(255, 255, 0)";
@@ -157,6 +160,11 @@ var resetHangman = function () {
     hangmanGuessed.textContent = "";
     getHangmanWord();
 };
+// Cracker Barrel Peg Game
+var peggingBoard = document.getElementById("pegging");
+var pegHoles = document.getElementById("pegHoles");
+var followMouseLoop = false;
+boards.push(peggingBoard);
 // others
 // init
 for (var i = 1; i < boards.length; i++) {
@@ -180,6 +188,7 @@ for (var _i = 0, _a = Array.from(tabButtons); _i < _a.length; _i++) {
             retryButton.style.top = "0px";
             vsComputerBox.parentElement.style.display = "flex";
             vsComputerBox.parentElement.children[1].textContent = "Play vs Computer";
+            tictactoeBoard.style.height = "".concat(tictactoeBoard.clientWidth, "px");
             currentTab = "tictactoe";
         }
         if (e.target.id === "tabConnect") {
@@ -196,6 +205,11 @@ for (var _i = 0, _a = Array.from(tabButtons); _i < _a.length; _i++) {
             vsComputerBox.parentElement.style.top = "0px";
             vsComputerBox.parentElement.style.display = "flex";
             vsComputerBox.parentElement.children[1].textContent = "Show Category Name";
+            currentTab = "hangman";
+        }
+        if (e.target.id === "tabPegging") {
+            peggingBoard.style.display = "flex";
+            vsComputerBox.parentElement.style.display = "none";
             currentTab = "hangman";
         }
     });

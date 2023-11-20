@@ -2,6 +2,7 @@
 const resultText = document.getElementById("result") as HTMLElement;
 const retryButton = document.getElementById("retryButton") as HTMLElement;
 const vsComputerBox = document.getElementById("vsComputer") as HTMLInputElement;
+const mousePos = {x: 0, y: 0}
 let currentTab: string;
 let vsComputer = vsComputerBox.checked;
 let turnCounter = 1;
@@ -14,6 +15,7 @@ const endGame = (result: string, gameEventListener: EventListener, resetFunction
     retryButton.addEventListener("click", resetFunction);
 }
 window.onresize = () => {
+    window.innerWidth < 980 ? connectRatio = .75 : connectRatio = .8;
     tictactoeBoard.style.height = `${tictactoeBoard.clientWidth}px`
     connectBoard.style.paddingBottom = `${connectRatio * connectBoard.clientWidth}px`
 }
@@ -41,7 +43,8 @@ const resetTictactoe = () => {
 
 // connect 4
 const connectBoard = document.getElementById("connect") as HTMLElement;
-const connectRatio = .8;
+let connectRatio: number;
+window.innerWidth < 980 ? connectRatio = .75 : connectRatio = .8;
 boards.push(connectBoard);
 const redRGB = "rgb(255, 0, 0)"
 const yellowRGB = "rgb(255, 255, 0)"
@@ -106,6 +109,11 @@ const resetHangman = () => {
     getHangmanWord();
 }
 
+// Cracker Barrel Peg Game
+const peggingBoard = document.getElementById("pegging") as HTMLDivElement;
+const pegHoles = document.getElementById("pegHoles") as HTMLDivElement;
+let followMouseLoop = false;
+boards.push(peggingBoard);
 
 // others
 
@@ -130,7 +138,8 @@ for (let i of Array.from(tabButtons)) {
             (vsComputerBox.parentElement as HTMLElement).style.top = "0px";
             retryButton.style.top = "0px";
             (vsComputerBox.parentElement as HTMLElement).style.display = "flex";
-            ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Play vs Computer"
+            ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Play vs Computer";
+            tictactoeBoard.style.height = `${tictactoeBoard.clientWidth}px`;
             currentTab = "tictactoe"
         }
         if ((e.target as HTMLElement).id === "tabConnect") {
@@ -147,6 +156,11 @@ for (let i of Array.from(tabButtons)) {
             (vsComputerBox.parentElement as HTMLElement).style.top = "0px";
             (vsComputerBox.parentElement as HTMLElement).style.display = "flex";
             ((vsComputerBox.parentElement as HTMLElement).children[1] as HTMLElement).textContent = "Show Category Name"
+            currentTab = "hangman"
+        }
+        if ((e.target as HTMLElement).id === "tabPegging") {
+            peggingBoard.style.display = "flex";
+            (vsComputerBox.parentElement as HTMLElement).style.display = "none"; 
             currentTab = "hangman"
         }
     })
