@@ -1,7 +1,6 @@
 getHangmanWord();
 
 const endHangman = (result: string) => {
-    console.log(result)
     hangmanSpaces.textContent = hangmanWord;
     hangmanSubmit.style.display = "none";
     hangmanInput.style.display = "none";
@@ -9,17 +8,13 @@ const endHangman = (result: string) => {
 }
 
 const handleHangmanSubmit = (e: Event) => {
-    console.log("boo");
     if (hangmanInput.value == null || hangmanInput.value === "" || (hangmanGuessed.textContent as string).includes(hangmanInput.value)) return hangmanInput.value = "";
     if (hangmanInput.value?.length === 1) {
-        console.log(hangmanWord.includes(hangmanInput.value))
         if (hangmanWord.includes(hangmanInput.value)) {
             let newGuessed = (hangmanSpaces.textContent as string).split("");
             for (let i = 0; i < newGuessed.length; i++) {
-                console.log(hangmanWord.split("")[i] === hangmanInput.value)
                 if (hangmanWord.split("")[i] === hangmanInput.value.toLowerCase() && hangmanInput.value !== " ") newGuessed[i] = hangmanInput.value;
             }
-            console.log(hangmanSpaces.textContent)
             hangmanSpaces.textContent = newGuessed.join("");
         } else {
             wrongGuesses++;

@@ -136,7 +136,7 @@ p:hover {
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 660px) {
     #connect {
         width: 75vw;
     }
