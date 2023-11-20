@@ -61,15 +61,20 @@ const evaluateGameConnect = () => {
         let updownString = "";
         let diagonalString = "";
         let diagonalLeftString = "";
+        let ignoreDiagonal = false;
+        let ignoreDiagonalLeft = false;
         for (let j = 0; j < 6; j++) {
             updownString += boardString[i+7*j] || "z";
-            if (i % 7 < 4) diagonalString += boardString[i+8*j] || "z";
-            if (i % 7 >= 3) diagonalLeftString += boardString[i+6*j] || "z";
+            if (i % 8 !== 0) ignoreDiagonal = true;
+            if (i % 6 !== 0) ignoreDiagonalLeft = true;
+            if (i % 7 < 4 && !ignoreDiagonal) diagonalString += boardString[i+8*j] || "z";
+            if (i % 7 > 3 && !ignoreDiagonal) diagonalLeftString += boardString[i+6*j] || "z";
         }
+        console.log(updownString, diagonalString, diagonalLeftString, i, boardString[i])
         if (updownString.length === 6 && updownString.includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 Wins";
         if (updownString.length === 6 && updownString.includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
         // Horizontal Win
-        if (i < 7 && boardString.slice(0 + 7*i, 7 + 7*i).includes("rrrr")) return "CPU wins";
+        if (i < 7 && boardString.slice(0 + 7*i, 7 + 7*i).includes("rrrr")) return vsComputer ? "CPU wins" : "Player 2 wins";
         if (i < 7 && boardString.slice(0 + 7*i, 7 + 7*i).includes("yyyy")) return vsComputer ? "Player wins" : "Player 1 Wins";
 
         // Diagonal Win
